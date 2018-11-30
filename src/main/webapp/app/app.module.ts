@@ -27,7 +27,7 @@ import { DifferencePipe, MomentModule } from 'angular2-moment';
 import { ArTEMiSEditorModule } from './editor';
 import { RepositoryInterceptor, RepositoryService } from './entities/repository';
 import { ArTEMiSQuizModule } from './quiz/participate';
-import { ArTEMiSTextModule } from './text/index';
+import { ArTEMiSTextModule } from './text-editor/index';
 import { ArTEMiSModelingStatisticsModule } from './modeling-statistics/';
 import * as moment from 'moment';
 import { ArTEMiSTextTutorModule } from './text/tutor';
@@ -81,7 +81,7 @@ import { ParticipationDataProvider } from './courses/exercises/participation-dat
         ArTEMiSModelingEditorModule,
         ArTEMiSTextModule,
         ArTEMiSTextTutorModule,
-        ArTEMiSModelingStatisticsModule,
+        ArTEMiSModelingStatisticsModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
