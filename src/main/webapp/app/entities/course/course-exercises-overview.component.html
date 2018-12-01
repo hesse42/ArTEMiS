@@ -2,25 +2,42 @@
     <div>
         <h4><span>Exercise Overview</span></h4>
     </div>
-    <jhi-exercise-overview-component>
-        <span jhiTranslate="arTeMiSApp.course.programmingExercises">Programming Exercises</span>
-        <jhi-programming-exercise></jhi-programming-exercise>
-    </jhi-exercise-overview-component>
-    <jhi-exercise-overview-component>
-        <span jhiTranslate="arTeMiSApp.course.quizExercises">Quiz Exercises</span>
-        <jhi-quiz-exercise></jhi-quiz-exercise>
-    </jhi-exercise-overview-component>
-    <jhi-exercise-overview-component>
-        <span jhiTranslate="arTeMiSApp.course.modelingExercises">Modelling Exercises</span>
-        <jhi-modeling-exercise></jhi-modeling-exercise>
-    </jhi-exercise-overview-component>
-    <jhi-exercise-overview-component>
-        <span jhiTranslate="arTeMiSApp.course.fileUploadExercises">File Upload Exercises</span>
-        <jhi-file-upload-exercise></jhi-file-upload-exercise>
-    </jhi-exercise-overview-component>
-    <jhi-exercise-overview-component>
-        <span jhiTranslate="arTeMiSApp.course.textExercises">Text Exercise</span>
-        <jhi-text-exercise></jhi-text-exercise>
-    </jhi-exercise-overview-component>
+    <div class="question card" *ngFor="let item of ExerciseType">
+        <div class="question-options card-header question-card-header">
+            <h5 *ngIf="item === 'quiz'">
+                <span jhiTranslate="arTeMiSApp.course.quizExercises">Exercises</span>
+            </h5>
+            <h5 *ngIf="item === 'modeling'">
+                <span jhiTranslate="arTeMiSApp.course.modelingExercises">Modelling Exercises</span>
+            </h5>
+            <h5 *ngIf="item === 'programming'">
+                <span jhiTranslate="arTeMiSApp.course.programmingExercises">Programming Exercises</span>
+            </h5>
+            <h5 *ngIf="item === 'text'">
+                <span jhiTranslate="arTeMiSApp.course.textExercises">Text Exercise</span>
+            </h5>
+            <h5 *ngIf="item === 'upload'">
+                <span jhiTranslate="arTeMiSApp.course.fileUploadExercises">File Upload Exercises</span>
+            </h5>
+           <jhi-exercise-overview-component></jhi-exercise-overview-component>
+        </div>
+        <div class="card-body question-card-body" [ngbCollapse]="isCollapsed">
+            <div *ngIf="item === 'quiz'">
+                <jhi-quiz-exercise></jhi-quiz-exercise>
+            </div>
+            <div *ngIf="item === 'programming'">
+                <jhi-programming-exercise></jhi-programming-exercise>
+            </div>
+            <div *ngIf="item === 'modeling'">
+                <jhi-modeling-exercise></jhi-modeling-exercise>
+            </div>
+            <div *ngIf="item === 'text'">
+                <jhi-text-exercise></jhi-text-exercise>
+            </div>
+            <div *ngIf="item === 'upload'">
+                <jhi-file-upload-exercise></jhi-file-upload-exercise>
+            </div>
+        </div>
+    </div>
 </div>
 

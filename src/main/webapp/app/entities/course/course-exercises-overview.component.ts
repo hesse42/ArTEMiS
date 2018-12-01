@@ -1,10 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager } from 'ng-jhipster';
-import { ExerciseType } from './course.model';
 import { Course } from './course.model';
+
+export enum item {
+    'quiz',
+    'programming',
+    'text',
+    'modeling',
+    'upload'
+}
 
 @Component({
     selector: 'jhi-course-overview',
@@ -14,14 +19,10 @@ export class CourseExercisesOverviewComponent implements OnInit {
     course: Course;
     private subscription: Subscription;
 
-    isQuizQuestionCollapsed: boolean;
-    isProgrammingQuestionCollapsed: boolean;
-    isModellingQuestionCollapsed: boolean;
-    isFileQuestionCollapsed: boolean;
-    isTextQuestionCollapsed: boolean;
     showPreview: boolean;
 
-    isQuestionCollapsed = new Map<ExerciseType, boolean>();
+    ExerciseType = ['quiz', 'programming', 'text', 'modeling', 'upload'];
+    isQuestionCollapsed = new Map<item, boolean>();
 
     constructor(private route: ActivatedRoute) {}
 
@@ -29,6 +30,10 @@ export class CourseExercisesOverviewComponent implements OnInit {
         this.subscription = this.route.params.subscribe(params => {
             console.log(params);
         });
+
+        for (const exerciseType in item) {
+            this.isQuestionCollapsed[exerciseType] = false;
+        }
         this.showPreview = false;
     }
 }
